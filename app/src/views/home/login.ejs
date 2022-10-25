@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <script src="/js/home/login.js"></script>
+    <!-- app.js파일에 app.use함수로 앱 세팅되어 /js/home/login.js 호출가능 -->
+    <script src="/js/home/login.js" defer></script>
     <title>Document</title>
 </head>
 <body>
-    <input type="text" placeholder="아이디"><br>
-    <input type="text" placeholder="비밀번호"><br>
-    <button>로그인</button>
+    <input id="id" type="text" placeholder="아이디"><br>
+    <input id="pw" type="text" placeholder="비밀번호"><br>
+    <button id="login">로그인</button>
 </body>
 </html>
