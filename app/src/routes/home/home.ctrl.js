@@ -1,7 +1,7 @@
 "use strict";
-const UserStorage = require("../../models/UserStorage");
-const { unsubscribe } = require(".");
+const User = require("../../models/User");
 
+// 홈페이지 리다이렉트
 const output = {
     home: (req, res) =>{
         res.render("home/index");
@@ -12,28 +12,12 @@ const output = {
     },    
 };
 
+// 원하는 기능 처리 
 const process = {
     login : (req, res) =>{
-        console.log('---서버에 전송된 내용---');    
-        const id = req.body.id,
-            pw=req.body.pw;
-
-        const users = UserStorage.getUsers("id","pw"); //static 메서드라 접근가능
-
-        console.log(id, pw);
-
-        const response={};
-        
-        if(users.id.includes(id)){
-            const idx = users.id.indexOf(id);
-            if(users.pw[idx]=== pw){
-                 response.success = true;
-                 return res.json(response)
-            }
-        }
-        response.success = false;
-        response.msg = "로그인에 실패했습니다.";
-        return res.json(response);
+        const user = new User(req.body);
+        const response = user.login();
+        return res.json(response);  // res로 클라언트에게 리턴
     },
 };
 

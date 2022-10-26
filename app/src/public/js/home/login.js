@@ -1,6 +1,6 @@
 "use strict"
 
-// 컨트롤러의 id에 해당되는 태그 리퀘스트 : document.querySelector
+// 컨트롤러의 id에 해당되는 태그 리퀘스트 : document.querySelector (DOM)
 const id = document.querySelector("#id"),
     pw = document.querySelector("#pw"),
     loginBtn = document.querySelector("#login");
@@ -13,10 +13,9 @@ function login(){
         id : id.value,
         pw : pw.value,
     };
-     console.log(req);
-     console.log(JSON.stringify(req));
 
     // fetch API : 서버로 데이터 전송
+        // router.post("/login", ctrl.process.login);
     fetch("/login", {
         method: "POST",
         headers: {
