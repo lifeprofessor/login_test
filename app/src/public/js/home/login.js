@@ -13,15 +13,16 @@ function login(){
         id : id.value,
         pw : psword.value,
     };
-    console.log(req);
-    console.log(JSON.stringify(req));
+     console.log(req);
+     console.log(JSON.stringify(req));
 
     // fetch API : 서버로 데이터 전송
     fetch("/login", {
-        metod: "POST",
-        header: {
-            "Content-Type": "application/json"
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
         },
         body: JSON.stringify(req),
     });
+
 }

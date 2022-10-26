@@ -45,8 +45,8 @@
     "http-errors": "^2.0.0",
     "iconv-lite": "^0.4.24",
     "inherits": "^2.0.4",
-    "jake": "^10.8.5",
     "ipaddr.js": "^1.9.1",
+    "jake": "^10.8.5",
     "media-typer": "^0.3.0",
     "merge-descriptors": "^1.0.1",
     "methods": "^1.1.2",
@@ -78,7 +78,6 @@
     "utils-merge": "^1.0.1",
     "vary": "^1.1.2"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "nodemon ./bin/www.js",
     "test": "echo \"Error: no test specified\" && exit 1"
