@@ -7,10 +7,13 @@ class User {
         this.body = body;
     }
     
-    login(){
+    async login(){
         const client = this.body;
         // getUsers메서드는 id, pw를 객체로 리턴
-        const {id, pw} = UserStorage.getUserInfo(client.id);
+
+        // await은 promise의 pending(다 못받음)을 처리해줌
+            // await은 async 함수에서만 사용 가능, 비동기 처리
+        const {id, pw} = await UserStorage.getUserInfo(client.id); 
 
         // id 정보 판별
         if(id){

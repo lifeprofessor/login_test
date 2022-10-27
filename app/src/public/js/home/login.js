@@ -15,7 +15,7 @@ function login(){
         pw : pw.value,
     };
 
-    // fetch API : 서버로 데이터 전송
+    // fetch API : 서버로 데이터 전송: promise 반환
         // router.post("/login", ctrl.process.login);
     fetch("/login", {
         method: "POST",

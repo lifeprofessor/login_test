@@ -17,9 +17,9 @@ const output = {
 
 // 원하는 기능 처리 
 const process = {
-    login : (req, res) =>{
+    login : async(req, res) =>{
         const user = new User(req.body);
-        const response = user.login();
+        const response = await user.login();    // 비동기 처리
         return res.json(response);  // res로 클라언트에게 리턴
     },
     register : (req, res) =>{
