@@ -6,6 +6,7 @@ class UserStorage{
         pw: ["1234","1234"],
         name: ["성민", "예정"],
     };
+
     // 변수가 n개인 경우 사용법
     static getUsers(...fields){
         const users = this.#users;
@@ -29,6 +30,10 @@ class UserStorage{
         }, {});
 
         return userInfo;
+    }
+
+    static save(userInfo){
+        return {success : true};
 
     }
 

@@ -11,14 +11,22 @@ const id = document.querySelector("#id"),
 registerBtn.addEventListener("click", register);
 
 function register(){
+    if(!id.value)  
+        return alert('아이디를 입력 바랍니다.');    
+    if(!pw.value || !cpw.value)  
+        return alert('비밀번호 입력 바랍니다.');
+    if(pw.value !== cpw.value)   
+        return alert('비밀번호가 일치하지 않습니다');
+    
+// 아이디 입력했고 및 비번이 맞는 경우
     const req = {
         id : id.value,
         name : name.value,
-        pw : pw.value,
-        cpw : cpw.value,
-
+        pw : pw.value,    
     };
     console.log(req);
+    
+    
 
     //fetch API : 서버로 데이터 전송
         //router.post("/register", ctrl.process.register);
