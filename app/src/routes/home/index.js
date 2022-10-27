@@ -1,4 +1,5 @@
 "use strict";
+// 홈 컨트롤러의 함수 실행
 
 const express = require('express');
 const router = express.Router();
