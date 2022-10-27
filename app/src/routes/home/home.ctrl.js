@@ -22,9 +22,9 @@ const process = {
         const response = await user.login();    // 비동기 처리
         return res.json(response);  // res로 클라언트에게 리턴
     },
-    register : (req, res) =>{
+    register : async(req, res) =>{
         const user = new User(req.body);
-        const response = user.register();
+        const response = await user.register();
         return res.json(response);  // res로 클라언트에게 리턴
     }
 };

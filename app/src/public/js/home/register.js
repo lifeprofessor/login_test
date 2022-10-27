@@ -26,8 +26,6 @@ function register(){
     };
     console.log(req);
     
-    
-
     //fetch API : 서버로 데이터 전송
         //router.post("/register", ctrl.process.register);
     
@@ -41,6 +39,7 @@ function register(){
     .then((res)=>res.json())
     .then((res)=>{
         if(res.success){
+            alert(res.msg);
             location.href="/login";
         }else{
             alert(res.msg)
