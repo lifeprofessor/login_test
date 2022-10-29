@@ -9,6 +9,7 @@ class UserStorage{
         // Promise 안에 구문이 성공하면 resolve실행, 실패하면 reject 실행
         return new Promise((resolve, reject)=>{
             const query = "select * from users where id = ?;";
+            //const query = "SELECT ifnull(max(id), 'noid') as id, pw FROM users where id=?;";
             db.query(query, [id], (err, data)=>{
                 if(err) reject(`${err}`);
                 resolve(data[0]);   // 배열로 전달되므로 배열로 1개의 객체만 보냄
