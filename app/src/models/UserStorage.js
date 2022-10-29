@@ -1,6 +1,6 @@
 "use strict";
 
-const fs = require('fs').promises;  // promises로 값을 리턴받기 위해서 설정
+const db = require("../config/db");
 
 class UserStorage{
     static #getUserInfo(data, id){
@@ -32,41 +32,20 @@ class UserStorage{
 
     // 변수가 n개인 경우 사용법
     static getUsers(isAll, ...fields){
-        // const users = this.#users;
-        return fs.readFile("./src/databases/users.json")
-          .then((data)=>{
-            return this.#getUsers(data, isAll, fields);
-          })
-          .catch(console.error);
-
         
     }
 
     static getUserInfo(id){
-        // const users = this.#users;          // users private변수 사용
-        
-        return fs.readFile("./src/databases/users.json")
-          .then((data)=>{
-            return this.#getUserInfo(data, id);
-          })
-          .catch(console.error);
-
+        // Promise 안에 구문이 성공하면 resolve실행, 실패하면 reject 실행
+        return new Promise((resolve, reject)=>{
+            db.query("select * from users where id = ?", [id], (err, data)=>{
+                if(err) reject(err);
+                resolve(data[0]);   // 배열로 전달되므로 배열로 1개의 객체만 보냄
+            });
+        });
     }
 
     static async save(userInfo){
-        // 데이터 불러오기
-        const users = await this.getUsers(true);
-        console.log(users);
-        // users.json에 없는 ID이면 데이터 추가
-        if(users.id.includes(userInfo.id)){
-            throw "이미 존재하는 아이디입니다.";
-        }else{
-            users.id.push(userInfo.id);
-            users.name.push(userInfo.name);
-            users.pw.push(userInfo.pw);
-            fs.writeFile('./src/databases/users.json', JSON.stringify(users));
-            return {success : true, msg : '회원가입 감사합니다.'};
-        }
     }
 
 }
