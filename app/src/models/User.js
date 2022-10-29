@@ -1,4 +1,5 @@
 "use strict";
+const logger = require("../config/logger");
 
 const UserStorage = require("./UserStorage");
 
@@ -18,7 +19,7 @@ class User {
             if(!isEmpty(client.id) && !isEmpty(client.pw)){
                 // db에서 값을 못불러오면 undefinded가 리턴되므로 {,} 구조분해할당 안됨
                 const user = await UserStorage.getUserInfo(client.id);
-                console.log(user);
+                logger.info("DB로 로그인 id 검색");
                 if(user){
                     if(user.id===client.id && user.pw === client.pw){
                         return {success : true, msg: "로그인 환영합니다."};
