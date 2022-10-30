@@ -35,7 +35,7 @@ class User {
             }         
 
         }catch(err){
-            return {success: false, msg: err};
+            return {success: false, err}; //key와 value가 같으면 value 생략가능
         }
     }
 
@@ -45,7 +45,7 @@ class User {
             const response = await UserStorage.save(client)
             return response;
         }catch(err){
-            return { success: false, msg: err};
+            return { success: false, err};
         }
     }
 }

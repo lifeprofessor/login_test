@@ -3,7 +3,7 @@ const accessLogStream = require("./log");
 const {combine, timestamp, label, printf, simple, colorize} = format;
 
 const printFormat = printf(({timestamp, label, level, message})=>{
-    return `${level} [${label}] ${timestamp} ${message}`
+    return `${timestamp} ${level} [${label}] ${message}`
 });
 
 const printLogFormat = {
@@ -42,6 +42,10 @@ const logger = createLogger({
 
 if(process.env.NODE_ENV !== "production"){
     logger.add(opts.console);
+}
+
+logger.stream ={
+    write: (message)=>logger.info(message),
 }
 
 module.exports = logger;

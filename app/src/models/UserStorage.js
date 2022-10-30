@@ -12,7 +12,7 @@ class UserStorage{
             //const query = "SELECT ifnull(max(id), 'noid') as id, pw FROM users where id=?;";
             db.query(query, [id], (err, data)=>{
                 if(err) reject(`${err}`);
-                resolve(data[0]);   // 배열로 전달되므로 배열로 1개의 객체만 보냄
+                else resolve(data[0]);   // 배열로 전달되므로 배열로 1개의 객체만 보냄
             });
         });
     }
@@ -25,7 +25,7 @@ class UserStorage{
                 [userInfo.id, userInfo.pw, userInfo.name], 
                 (err)=>{
                 if(err) reject(`${err}`);
-                resolve({success : true});   // 배열로 전달되므로 배열로 1개의 객체만 보냄
+                else resolve({success : true});   // 배열로 전달되므로 배열로 1개의 객체만 보냄
             });
         });
     }
