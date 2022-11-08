@@ -25,7 +25,7 @@ class UserStorage{
                 [userInfo.id, userInfo.pw, userInfo.name], 
                 (err)=>{
                 if(err) reject(`${err}`);
-                else resolve({success : true});   // 배열로 전달되므로 배열로 1개의 객체만 보냄
+                else resolve({success : true, msg: "회원가입 되었습니다."});   // 배열로 전달되므로 배열로 1개의 객체만 보냄
             });
         });
     }

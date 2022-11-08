@@ -45,6 +45,8 @@
         webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
         await webcam.setup(); // request access to the webcam
         await webcam.play();
+        
+        
         window.requestAnimationFrame(loop);
 
         // append/get elements to the DOM
@@ -64,6 +66,7 @@
         webcam.update(); // update the webcam frame
         await predict();
         window.requestAnimationFrame(loop);
+        
     }
 
     async function predict() {
